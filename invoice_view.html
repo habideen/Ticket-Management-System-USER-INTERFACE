@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>invoice</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="assets/css/styles.min.css">
+</head>
+
+<body id="print-body" style="background-color:#2a51c4;">
+    <div class="container mt-5 mb-5">
+        <div class="modal fade" role="dialog" tabindex="-1" id="edit-invoice">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Edit invoice</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="row ml-0">
+                            <div class="form-group col-sm-6"><label class="focus-up"><input class="form-control" type="text" placeholder=" "><span>Customer</span></label></div>
+                            <div class="form-group col-sm-6"><label class="focus-up"><input class="form-control" type="text" placeholder=" "><span>Phone</span></label></div>
+                            <div class="form-group col-12"><label class="focus-up"><input class="form-control" type="text" placeholder=" "><span>Address</span></label></div>
+                            <div class="form-group col-12"><label class="focus-up"><input class="form-control" type="text" placeholder=" "><span>Product</span></label></div>
+                            <div class="form-group col-12 mb-4 pb-3"><textarea class="form-control" placeholder="Description"></textarea></div>
+                            <div class="form-group col-12 mb-4 pb-3">
+                                <div class="input-group">
+                                    <div><input class="form-control" type="text" style="width: 100px;border-top-right-radius: 0;border-bottom-right-radius: 0;" placeholder="Qty"></div><input class="form-control" type="text" placeholder="Price">
+                                    <div class="input-group-text" style="border-top-left-radius: 0;border-bottom-left-radius: 0;"><span>1,200 NGN</span></div>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6"><select class="form-control new-select">
+                                    <option value="">Select status</option>
+                                    <option value="Part">Part</option>
+                                    <option value="Full">Full</option>
+                                </select></div>
+                            <div class="form-group col-12 mt-4"><button class="btn btn-primary" type="submit">Create invoice</button></div>
+                        </form>
+                    </div>
+                    <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-around">
+            <div class="col-sm-10 col-md-7 bg-white p-4" style="border-radius:7px;">
+                <div id="printarea"><a href="#">
+                        <h1><img class="mb-2" src="assets/img/icon.png" style="height: 30px;">Brand 1</h1>
+                    </a>
+                    <p class="mb-1">Block 987 Mayfair, Ile-Ife, Osun State.</p>
+                    <p class="mb-1">PO BOX 987</p>
+                    <p class="mb-4"><i class="fa fa-phone mr-2"></i>08122318700<i class="fa fa-envelope ml-4 mr-2"></i>abc@gmail.com</p>
+                    <h5 class="text-center mb-0 bg-dark text-white p-3"><strong>Invoice</strong></h5>
+                    <div class="mt-2 mb-5 pt-4 pb-3" style="border-top: 0.5px none #eaeaf1 ;border-bottom: 0.5px solid #eaeaf1 ;">
+                        <p class="mb-3" style="font-size: 16px;"><span class="mr-3"><strong>Customer:</strong></span>Clay Potter</p>
+                        <p class="mb-3" style="font-size: 16px;"><span class="mr-3"><strong>Address:</strong></span>Blue moon, Ile-Ife</p>
+                        <p class="mb-3" style="font-size: 16px;"><span class="mr-3"><strong>Phone:</strong></span>09088675645</p>
+                        <p class="mb-3 mt-5" style="font-size: 16px;"><span class="mr-3"><strong>Quantity:</strong></span>1</p>
+                        <p class="mb-3" style="font-size: 16px;"><span class="mr-3"><strong>Price per item:</strong></span>980 NGN</p>
+                        <p class="mb-3" style="font-size: 16px;"><span class="mr-3"><strong>Total:</strong></span>980 NGN</p>
+                    </div>
+                </div>
+                <div id="print-footer">
+                    <div id="link" class="mb-4">
+                        <div class="input-group"><button class="btn input-group-text" type="button" style="border-top-right-radius: 0;border-bottom-right-radius: 0;" onclick="copyText(&quot;copy_txt&quot;);"><i class="fa fa-link"></i></button><input type="text" id="copy_txt" class="form-control no-shadow" readonly="" value="https://www.maya.com/payment_code.html?brand=brand1"></div>
+                    </div>
+                    <div id="btn"><a class="btn btn-outline-primary mr-3" role="button" href="invoice.html"><i class="fa fa-arrow-left mr-1"></i>Go back</a><button class="btn btn-primary mr-3" type="button" data-toggle="modal" data-target="#edit-modal">Edit</button><button class="btn btn-success mr-3" type="button">Submit</button><button class="btn btn-dark mr-3" type="button" onclick="window.print();">Print</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="assets/js/script.min.js"></script>
+</body>
+
+</html>
